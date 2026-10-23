@@ -39,11 +39,15 @@ func (d *Department) AddTemperature(sign string, temp int) int {
 
 func main() {
 	var n int
-	fmt.Scan(&n)
+	if _, err := fmt.Scan(&n); err != nil {
+		return
+	}
 
 	for range n {
 		var staff int
-		fmt.Scan(&staff)
+		if _, err := fmt.Scan(&staff); err != nil {
+			return
+		}
 
 		department := NewDepartment()
 
@@ -53,7 +57,9 @@ func main() {
 				temp int
 			)
 
-			fmt.Scan(&sign, &temp)
+			if _, err := fmt.Scan(&sign, &temp); err != nil {
+				return
+			}
 
 			fmt.Println(department.AddTemperature(sign, temp))
 		}
