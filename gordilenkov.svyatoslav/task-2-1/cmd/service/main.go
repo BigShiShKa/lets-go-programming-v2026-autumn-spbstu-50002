@@ -39,25 +39,21 @@ func (d *Department) AddTemperature(sign string, temp int) int {
 
 func main() {
 	var n int
-	if _, err := fmt.Scan(&n); err != nil {
-		return
-	}
+	fmt.Scan(&n)
 
-	for i := 0; i < n; i++ {
+	for range n {
 		var staff int
-		if _, err := fmt.Scan(&staff); err != nil {
-			return
-		}
+		fmt.Scan(&staff)
 
 		department := NewDepartment()
 
-		for j := 0; j < staff; j++ {
-			var sign string
-			var temp int
+		for range staff {
+			var (
+				sign string
+				temp int
+			)
 
-			if _, err := fmt.Scan(&sign, &temp); err != nil {
-				return
-			}
+			fmt.Scan(&sign, &temp)
 
 			fmt.Println(department.AddTemperature(sign, temp))
 		}
